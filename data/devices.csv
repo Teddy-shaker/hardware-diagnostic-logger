@@ -1,0 +1,5 @@
+device_name,device_type,voltage,temperature,current
+Controller-A,Microcontroller,3.3,42.5,1.1
+Motor-Driver-B,Motor Driver,5.2,66.0,2.2
+Sensor-C,Temperature Sensor,3.1,76.5,0.4
+Gateway-D,IoT Gateway,4.8,88.2,2.9
