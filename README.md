@@ -56,7 +56,7 @@ hardware-diagnostic-logger/
 From the project folder:
 
 ```bash
-cd /Users/teddy/Desktop/hardware-diagnostic-logger
+cd /hardware-diagnostic-logger
 python3 -B main.py
 ```
 
