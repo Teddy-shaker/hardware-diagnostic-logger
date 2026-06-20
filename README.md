@@ -3,8 +3,8 @@
 ## Overview
 
 Hardware Diagnostic Logger is a small Python project that reads device data from
-a CSV file, creates `Device` objects, runs diagnostic checks, and generates a
-text report showing whether each device passed, failed, or needs attention.
+a CSV file, creates `Device` objects, runs diagnostic checks, and generates text
+and CSV reports showing whether each device passed, failed, or needs attention.
 
 The project is designed to demonstrate file input/output, classes, public and
 private members, containers, conditionals, loops, exception handling, and unit
@@ -21,6 +21,7 @@ testing.
 - Runs voltage, temperature, and current diagnostics
 - Assigns each device a `PASS`, `WARNING`, or `FAIL` status
 - Generates `reports/diagnostic_report.txt`
+- Generates `reports/diagnostic_report.csv`
 - Includes two unit tests for public class methods
 
 ## Project Structure
@@ -32,7 +33,8 @@ hardware-diagnostic-logger/
 ├── data/
 │   └── devices.csv
 ├── reports/
-│   └── diagnostic_report.txt
+│   ├── diagnostic_report.txt
+│   └── diagnostic_report.csv
 ├── tests/
 │   └── test_device.py
 └── diagrams/
@@ -42,10 +44,11 @@ hardware-diagnostic-logger/
 
 ## Main Files
 
-- `main.py`: Loads devices from CSV, runs diagnostics, and writes the report.
+- `main.py`: Loads devices from CSV, runs diagnostics, and writes the reports.
 - `device.py`: Defines the `Device` class and diagnostic methods.
 - `data/devices.csv`: Input file containing device data.
-- `reports/diagnostic_report.txt`: Generated output report.
+- `reports/diagnostic_report.txt`: Generated text output report.
+- `reports/diagnostic_report.csv`: Generated CSV output report.
 - `tests/test_device.py`: Unit tests for the `Device` class.
 
 ## How To Run
@@ -53,7 +56,7 @@ hardware-diagnostic-logger/
 From the project folder:
 
 ```bash
-cd /hardware-diagnostic-logger
+cd /Users/teddy/Desktop/hardware-diagnostic-logger
 python3 -B main.py
 ```
 
@@ -67,6 +70,7 @@ and generate:
 
 ```text
 reports/diagnostic_report.txt
+reports/diagnostic_report.csv
 ```
 
 ## How To Run Tests
@@ -97,6 +101,20 @@ Example:
 Controller-A,Microcontroller,3.3,42.5,1.1
 ```
 
+## CSV Report Format
+
+The generated CSV report includes these columns:
+
+```csv
+name,device_type,status,reason
+```
+
+Example output row:
+
+```csv
+Controller-A,Microcontroller,PASS,All diagnostic checks passed.
+```
+
 ## Diagnostic Rules
 
 - Voltage must be between `3.0` and `5.0`.
@@ -110,6 +128,7 @@ Controller-A,Microcontroller,3.3,42.5,1.1
 This project includes:
 
 - File reading and writing
+- Text and CSV report generation
 - User-defined functions
 - Loops and conditional logic
 - `try` / `except` / `else`
@@ -119,4 +138,3 @@ This project includes:
 - Public and private methods
 - `__init__`, `__str__`, and `__eq__` magic methods
 - Two unit tests using `assert` statements
-```
