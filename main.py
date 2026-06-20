@@ -1,4 +1,5 @@
 import csv
+import io
 from pathlib import Path
 
 from device import Device
@@ -59,11 +60,12 @@ def generate_report(devices, text_report_file=TEXT_REPORT_FILE, csv_report_file=
 
     text_report_file.write_text("\n".join(report_lines), encoding="utf-8")
 
-    with open(csv_report_file, mode="w", encoding="utf-8", newline="") as file:
-        fieldnames = ("name", "device_type", "status", "reason")
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(report_rows)
+    fieldnames = ("name", "device_type", "status", "reason")
+    csv_buffer = io.StringIO()
+    writer = csv.DictWriter(csv_buffer, fieldnames=fieldnames, lineterminator="\n")
+    writer.writeheader()
+    writer.writerows(report_rows)
+    csv_report_file.write_text(csv_buffer.getvalue().rstrip("\n"), encoding="utf-8")
 
     return text_report_file, csv_report_file
 
